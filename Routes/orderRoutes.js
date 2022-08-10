@@ -6,7 +6,7 @@ const orderRouter = express.Router();
 
 let maxCapacity = 100;
 
-//Add account
+//Add order
 orderRouter.post("/add", async (req, res) => {
   try {
     const order = new orderDetails({
@@ -32,6 +32,7 @@ orderRouter.post("/add", async (req, res) => {
   }
 });
 
+//Update order details
 orderRouter.patch("/update/:id", async (req, res) => {
   try {
     const options = { new: true };
@@ -49,6 +50,7 @@ orderRouter.patch("/update/:id", async (req, res) => {
   }
 });
 
+//Update order status
 orderRouter.patch("/updateStatus/:id", async (req, res) => {
   try {
     const options = { new: true };
@@ -70,6 +72,7 @@ orderRouter.patch("/updateStatus/:id", async (req, res) => {
   }
 });
 
+//Delete Order
 orderRouter.delete("/delete/:id", async (req, res) => {
   try {
     const result = await orderDetails.findByIdAndDelete(req.params.id);
@@ -81,6 +84,7 @@ orderRouter.delete("/delete/:id", async (req, res) => {
   }
 });
 
+//Check capacity
 orderRouter.get("/checkCapacity/:date", async (req, res) => {
   try {
     const results = await orderDetails.find();
